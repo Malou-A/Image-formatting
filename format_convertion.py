@@ -36,7 +36,7 @@ parser.add_argument(
 	required = True
 	)
 parser.add_argument(
-	'-ft',
+	'-oft',
 	dest = 'output_filetype',
 	metavar = 'OUT_FILETYPE',
 	type = str,
