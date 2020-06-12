@@ -8,14 +8,15 @@ from tqdm import tqdm
 from pathlib import Path
 
 #################################### ARGPARSE ##################################
-usage = 'Enter the directory name of the C01 files, and name a directory where you want the tiff files to end up.'
+usage = 'Enter the directory name where the files to convert are located, what format to convert the files to \
+and name a directory where you want the converted files to end up.'
 parser = argparse.ArgumentParser(description=usage)
 parser.add_argument(
 	'-i',
 	dest = 'infile',
 	metavar = 'INDIR',
 	type = str,
-    help = 'set the directory where the .C01 files are located',
+    help = 'set the directory where the input files are located',
 	required = True
 	)
 parser.add_argument(
@@ -23,7 +24,23 @@ parser.add_argument(
 	dest = 'outfile',
 	metavar = 'OUTDIR',
 	type = str,
-    help = 'set the directory to store the .tiff files',
+    help = 'set the directory to store the converted files',
+	required = True
+	)
+parser.add_argument(
+	'-ift',
+	dest = 'input_filetype',
+	metavar = 'IN_FILETYPE',
+	type = str,
+    help = 'Set what format the input files are, e.g C01 png',
+	required = True
+	)
+parser.add_argument(
+	'-ft',
+	dest = 'output_filetype',
+	metavar = 'OUT_FILETYPE',
+	type = str,
+    help = 'Chose format to convert to, e.g. tiff or png',
 	required = True
 	)
 args = parser.parse_args()
@@ -33,6 +50,9 @@ args = parser.parse_args()
 input_dir = os.path.abspath(args.infile)
 output_dir = os.path.abspath(args.outfile)
 
+
+out_filetype = '.{}'.format(args.output_filetype)
+in_filetype = args.input_filetype
 
 # If the output directory does not exist,
 # a directory will be created with that name.
@@ -46,14 +66,14 @@ if not os.path.isdir(input_dir):
 if not os.path.isdir(output_dir):
     raise argparse.ArgumentTypeError('Output must be a directory')
 
-C01_files = []
-tiff_files = []
+input_files = []
+converted_files = []
 os.chdir(input_dir)
-for i in os.listdir():
-    if i.split('.')[-1] == 'C01': # Checks that filename ends with .C01
-        C01_files.append(input_dir + '/' + i)
-        tiff_files.append(output_dir + '/' + i.split('.')[0] + '.tiff')
+for i in os.listdir(input_dir):
+    if i.split('.')[-1] == in_filetype: # Checks that filename ends with format chosen
+        input_files.append(input_dir + '/' + i)
+        converted_files.append(output_dir + '/' + i.split('.')[0] + out_filetype)
 
-for i,j in tqdm(zip(C01_files,tiff_files), total = len(C01_files)): # tqdm creates a progressbar to see the progress.
+for i,j in tqdm(zip(input_files,converted_files), total = len(input_files)): # tqdm creates a progressbar to see the progress.
     subprocess.run(['bfconvert', '-overwrite', '-nogroup',i,j],stdout = subprocess.PIPE, stderr = subprocess.DEVNULL) #Runs bftools which needs to be preinstalled, output to DEVNULL.
     subprocess.run(['convert', i, '-auto-level', '-depth', '16', '-define', 'quantum:format=unsigned', '-type', 'grayscale', j],stdout = subprocess.PIPE, stderr = subprocess.DEVNULL) #Convert images to 16-bits tiff images.

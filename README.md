@@ -1,10 +1,10 @@
-# .C01 to .tiff format
+# Change image format
 
 ## Usage
 ```bash
-python3 C01_to_tiff -i INDIR -o OUTDIR
+python3 format_convertion.py -i INDIR -o OUTDIR -ift IN_FILETYPE -oft OUT_FILETYPE
 ```
-Choose a directory with your .C01 files to convert, and name the output directory where you want to place the .tiff converted images.
+Choose a directory with your files to convert, which format they are (e.g. C01, png, tiff, jpg), and name the output directory where you want to place the converted images, and what format you want to convert them to (e.g. C01, png, tiff, jpg).
 
 
 
