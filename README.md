@@ -19,13 +19,16 @@ unzip bftools.zip
 rm bftools.zip
 export PATH=$PATH:~/bin/bftools
 ```
-Download and install java (Link is for Linux x64)
+Download and install java:
+
+Download from https://www.java.com/en/download/linux_manual.jsp
+
+(following commands are for the download for Linux x64)
 
 ```bash
-cd ~/bin
-wget https://javadl.oracle.com/webapps/download/AutoDL?BundleId=242980_a4634525489241b9a9e1aa73d9e118e6
-tar zxvf jre-8u73-linux-x64.tar.gz
-export PATH=$PATH:~/bin/jre-8u73-linux-x64
+cd ~/Downloads
+tar -C ~/bin zxvf jre-8u73-linux-x64.tar.gz
+export PATH=$PATH:~/bin/jre-8u73-linux-x64/bin
 ```
 
 Required python packages
