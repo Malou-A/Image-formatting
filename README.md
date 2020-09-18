@@ -27,8 +27,9 @@ Download from https://www.java.com/en/download/linux_manual.jsp
 
 ```bash
 cd ~/Downloads
-tar -C ~/bin -zxvf jre-8u73-linux-x64.tar.gz
-export PATH=$PATH:~/bin/jre-8u73-linux-x64/bin
+tar -C ~/bin -zxvf jre-8u261-linux-x64.tar.gz
+rm jre-8u261-linux-x64.tar.gz 
+export PATH=$PATH:~/bin/jre-8u261-linux-x64/bin
 ```
 
 Required python packages
