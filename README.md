@@ -36,7 +36,7 @@ Required python packages
 ```python
 pip install argparse
 pip install os
-pip install subprocess
+pip install subprocess.run
 pip install tqdm
 pip install pathlib
 ```
