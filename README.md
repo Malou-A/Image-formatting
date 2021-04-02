@@ -1,5 +1,7 @@
 # Change image format
 
+This script will allow you to change format of all images in one folder to one of following formats: C01, png, tiff, jpg.
+
 ## Usage
 ```bash
 python3 format_convertion.py -i INDIR -o OUTDIR -ift IN_FILETYPE -oft OUT_FILETYPE
