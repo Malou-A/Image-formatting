@@ -14,7 +14,7 @@ Choose a directory with your files to convert, which format they are (e.g. C01, 
 
 ### Installation using conda
 
-If you have conda install you can set up an environment as follows:
+If you have [conda](https://docs.anaconda.com/anaconda/install/), you can set up an environment as follows:
 
 ```bash
 conda create -n imgConv python=3.6
