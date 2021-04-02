@@ -10,6 +10,35 @@ Choose a directory with your files to convert, which format they are (e.g. C01, 
 
 ## Installation
 
+### Installation using conda
+
+If you have conda install you can set up an environment as follows:
+
+```bash
+conda create -n imgConv python=3.6
+conda activate imgConv
+```
+
+And install following:
+
+bftools
+```
+conda install -c bioconda bftools
+```
+
+And non standard python libraries:
+```bash
+conda install tqdm
+```
+
+If you get a java error, you might need to install it:
+```bash
+conda install -c bioconda java-jdk
+```
+
+
+### Regular installation
+
 Download bftools and unzip it to your /home/bin folder and add to path:
 
 ```bash
@@ -34,9 +63,7 @@ export PATH=$PATH:~/bin/jre-8u261-linux-x64/bin
 
 Required python packages
 ```python
-pip install argparse
-pip install os
-pip install subprocess.run
+pip install subprocess
 pip install tqdm
 pip install pathlib
 ```
