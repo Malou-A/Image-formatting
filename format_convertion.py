@@ -24,7 +24,7 @@ parser.add_argument(
 	dest = 'outfile',
 	metavar = 'OUTDIR',
 	type = str,
-    help = 'set the directory to store the converted files',
+    help = 'set the directory to store the converted files, directory will be created if not already existing.',
 	required = True
 	)
 parser.add_argument(
