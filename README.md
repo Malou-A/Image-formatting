@@ -63,10 +63,8 @@ rm jre-8u261-linux-x64.tar.gz
 export PATH=$PATH:~/bin/jre-8u261-linux-x64/bin
 ```
 
-Required python packages
+Required non standard python libraries
 ```python
-pip install subprocess
 pip install tqdm
-pip install pathlib
 ```
 
